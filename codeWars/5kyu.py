@@ -99,4 +99,22 @@ def increment_string(strng):
 
     if len(new) == 0: new.append('0')
     return strng.replace("".join(new), '') + '0' * (len("".join(new)) - len(str(int("".join(new)) + 1))) + str(int("".join(new)) + 1)
-    
+
+''' 
+Simple Pig Latin
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+Examples:
+    pig_it('Pig latin is cool') # igPay atinlay siay oolcay
+    pig_it('Hello world !')     # elloHay orldway !
+'''
+def pig_it(text):
+    arr_inv = []
+    arr = text.split(" ")
+    for el in arr:
+        if el[-1] not in '!.?#$%^&*':
+            arr_inv.append(el[1:] + el[0] + 'ay')
+        else:
+            arr_inv.append(el[1:] + el[0])
+    final = " ".join(arr_inv)
+    return final
