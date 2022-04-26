@@ -92,3 +92,43 @@ def duplicate_encode(word):
         else:
             final += '('
     return final
+
+'''
+Tribonacci Sequence
+As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the
+sequence to generate the next
+So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
+[1, 1 ,1, 3, 5, 9, 17, 31, ...]
+
+But what if we started with [0, 0, 1] as a signature? 
+As starting with [0, 1] instead of [1, 1] basically shifts the common Fibonacci sequence by once place, 
+you may be tempted to think that we would get the same sequence shifted by 2 places, but that is not the case and we would get:
+
+[0, 0, 1, 1, 2, 4, 7, 13, 24, ...]
+Well, you may have guessed it by now, but to be clear: you need to create a fibonacci function that given a 
+signature array/list, returns the first n elements - signature included of the so seeded sequence.
+'''
+def tribonacci(s, n):
+    nterms = n
+    n1, n2, n3 = s[0], s[1], s[2] 
+    count = 0
+
+    if nterms <= 0:
+        return []
+    elif nterms == 1:
+        return [n1]
+    elif nterms == 2:
+        return [n1, n2]
+    elif nterms == 3:
+        return [n1, n2, n3]
+    else:
+        arr = []
+        while count < nterms:
+            arr.append(n1)
+            nth = n1 + n2 + n3
+            # update values
+            n1 = n2
+            n2 = n3
+            n3 = nth
+            count += 1
+    return arr
