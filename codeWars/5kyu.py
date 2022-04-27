@@ -118,3 +118,29 @@ def pig_it(text):
             arr_inv.append(el[1:] + el[0])
     final = " ".join(arr_inv)
     return final
+
+''' 
+Valid Parentheses
+Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. 
+The function should return true if the string is valid, and false if it's invalid.
+
+Examples
+    "()"              =>  true
+    ")(()))"          =>  false
+    "("               =>  false
+    "(())((()())())"  =>  true
+'''
+def valid_parentheses(string):
+    txt = ''
+    flag = True
+    for el in string:
+        if el == '(' or el == ')':
+            txt += el
+    if txt == '': return True
+    while flag:
+        if txt.find('()') == -1:
+            return False
+        else:
+            txt = txt.replace('()','')
+            if txt == '': return True
+                
