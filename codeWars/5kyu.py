@@ -188,3 +188,30 @@ def first_non_repeating_letter(string):
         else:
             i += 1
     return ''
+''' 
+Human Readable Time
+Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+'''
+def make_readable(seconds):
+    hours = seconds // 3600
+    minutes = (seconds - (hours * 3600)) // 60
+    sec = seconds - (hours * 3600) - (minutes * 60)
+    fin = ''
+    if len(str(hours)) == 2:
+        fin += str(hours)
+    else:
+        fin += '0' + str(hours)
+    if len(str(minutes)) == 2:
+        fin += ':' + str(minutes)
+    else:
+        fin += ':0' + str(minutes)
+    if len(str(sec)) == 2:
+        fin += ':' + str(sec)
+    else:
+        fin += ':0' + str(sec)
+    
+    return fin
