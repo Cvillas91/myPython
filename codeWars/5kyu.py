@@ -258,3 +258,22 @@ def scramble(s1, s2):
         if s1.count(char) < s2.count(char):
             return False
     return True
+
+'''
+Number of trailing zeros of N!
+Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+Examples
+zeros(6) = 1
+# 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720 --> 1 trailing zero
+zeros(12) = 2
+# 12! = 479001600 --> 2 trailing zeros
+'''
+def zeros(n, fact = 0):
+    newN = n // (5)
+    newN1 = n / (5)
+    fact += newN
+    if newN1 < 1:
+        return fact
+    else:
+        return zeros(newN1, fact)
