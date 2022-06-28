@@ -26,7 +26,9 @@ def digital_root(n):
 '''
 Counting Duplicates
 Count the number of Duplicates
-Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits 
+that occur more than once in the input string. The input string can be assumed to contain only alphabets 
+(both uppercase and lowercase) and numeric digits.
 
 Example
 "abcde" -> 0 # no characters repeats more than once
@@ -192,6 +194,7 @@ def unique_in_order(iterable):
         if new[-1] != el:
             new.append(el)
     return new
+
 '''
 Persistent Bugger
 Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, 
