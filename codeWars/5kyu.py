@@ -318,3 +318,42 @@ def is_solved(board):
         return -1
     else:
         return 0
+
+'''
+Product of consecutive Fib numbers
+The Fibonacci numbers are the numbers in the following integer sequence (Fn):
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...
+F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.
+Given a number, say prod (for product), we search two Fibonacci numbers F(n) and F(n+1) verifying
+F(n) * F(n+1) = prod.
+Your function productFib takes an integer (prod) and returns an array:
+[F(n), F(n+1), true] or {F(n), F(n+1), 1} or (F(n), F(n+1), True)
+If you don't find two consecutive F(n) verifying F(n) * F(n+1) = prod 
+you will return [F(n), F(n+1), false] or {F(n), F(n+1), 0} or (F(n), F(n+1), False)
+F(n) being the smallest one such as F(n) * F(n+1) > prod.
+
+Example:
+
+productFib(714) # should return (21, 34, true), 
+                # since F(8) = 21, F(9) = 34 and 714 = 21 * 34
+'''
+def Fibo(n):
+    dict = {0:0, 1:1}
+    i = 0
+    while i <= n:
+        if i not in dict:
+            dict.update({i:dict[i-1] + dict[i-2]})
+        i += 1
+    return dict[n]
+           
+def productFib(prod, i = 0):
+    n0 = Fibo(i)
+    n1 = Fibo(i + 1)
+    while n1 * n0 <= prod:
+        if n1 * n0 == prod:
+            return [n0, n1, True]
+        else:
+            i += 1
+            n0 = Fibo(i)
+            n1 = Fibo(i + 1)
+    return [n0, n1, False]
