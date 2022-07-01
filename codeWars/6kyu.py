@@ -239,3 +239,48 @@ def up_array(arr):
         return final
     except:
         return None
+    
+'''
+Line Up
+There are several units in a line, out of your sight. You will be given a list of hints (a list or array of strings) that 
+indicates who is next to who in the queue, and you have to rebuild the queue of people, in appropriate order.
+Example
+With these hints,
+
+["white has black on his left",
+ "red has green on his right",
+  "black has green on his left"]
+you should reduce that the queue is the following:
+
+["red", "green", "black", "white"]
+Notes:
+It is always possible to reduce the complete order in the queue.
+The hints can be of two different forms, such as "white has black on his left", or "black has white on his right".
+Each queue has at least two units.
+''' 
+def line_up(hints):
+    final = []
+    forHints = []
+    dict = {}
+    for hint in hints:
+        forHints.append(hint.split(" "))
+        
+    for i in range(len(forHints)):
+        if forHints[i][5] == 'right':
+            if forHints[i][0] not in dict.keys():
+                dict[forHints[i][0]] = forHints[i][2]
+        elif forHints[i][5] == 'left':
+            if forHints[i][2] not in dict.keys():
+                dict[forHints[i][2]]= forHints[i][0]
+                
+    for i in range(len(forHints)):
+        if forHints[i][0] not in dict.values():
+            seed = forHints[i][0]
+        if forHints[i][2] not in dict.values():
+            seed = forHints[i][2]
+    
+    final.append(seed)
+    for i in range(len(dict)):
+        final.append(dict[final[i]])
+    
+    return final
