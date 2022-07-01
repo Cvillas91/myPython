@@ -213,3 +213,29 @@ def persistence(n, per = 0):
         for char in str(n):
             newN *= int(char)
         return persistence(newN, per + 1)
+    
+'''
++1 Array
+Given an array of integers of any length, return an array that has 1 added to the value represented by the array.
+The array can't be empty
+Only non-negative, single digit integers are allowed
+Return nil (or your language's equivalent) for invalid inputs.
+
+Examples
+For example the array [2, 3, 9] equals 239, adding one would return the array [2, 4, 0].
+[4, 3, 2, 5] would return [4, 3, 2, 6]
+''' 
+def up_array(arr):
+    if arr == []: return None
+    try:
+        new = ''
+        final = []
+        for el in arr:
+            if el >= 10: return None
+            new += str(el)
+        new = str(int(new) + 1)
+        for el in new:
+            final.append(int(el))
+        return final
+    except:
+        return None
