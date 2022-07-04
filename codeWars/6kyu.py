@@ -284,3 +284,27 @@ def line_up(hints):
         final.append(dict[final[i]])
     
     return final
+
+'''
+Find the missing letter
+Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+You will always get an valid array. And it will be always exactly one letter be missing. 
+The length of the array will always be at least 2.
+The array will always contain letters in only one case.
+
+Examples:
+['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
+["a","b","c","d","f"] -> "e"
+["O","Q","R","S"] -> "P"
+''' 
+def find_missing_letter(chars):
+    abc = 'abcdefghijklmnopqrstuvwxyz'
+    seed = chars[0].lower()
+    start = abc.index(seed)
+    for i in range(len(chars)):
+        if chars[i].lower() == abc[start + i]:
+            pass
+        else:
+            return abc[start + i].upper() if chars[0].isupper() else abc[start + i]
+        
+        
