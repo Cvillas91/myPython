@@ -357,3 +357,29 @@ def productFib(prod, i = 0):
             n0 = Fibo(i)
             n1 = Fibo(i + 1)
     return [n0, n1, False]
+
+'''
+Pascal's Diagonals
+Create a function that returns an array containing the first l numbers from the nth diagonal of Pascal's triangle.
+
+n = 0 should generate the first diagonal of the triangle (the ones).
+The first number in each diagonal should be 1.
+If l = 0, return an empty array.
+'''
+def generate_diagonal(n, l):
+    arr = []
+    fin = []
+    for i in range(1, l + n + 1):
+        new = []
+        C = 1
+        for j in range(1, i + 1):
+            new.append(C)
+            C = C *(i-j) // j
+        arr.append(new)
+    
+    j = 0
+    for i in range(n, l + n):
+            fin.append(arr[i][j])
+            j += 1
+
+    return fin
