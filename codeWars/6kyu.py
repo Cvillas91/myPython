@@ -395,3 +395,30 @@ def solution(s):
         arr.append(s[-1] + "_")
     
     return arr
+
+'''
+Sort the odd
+You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the 
+even numbers at their original positions.
+
+Examples
+[7, 1]  =>  [1, 7]
+[5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+'''
+def sort_array(arr):
+    aux = []
+    fin = []
+    for el in arr:
+        if el % 2 != 0:
+            aux.append(el)
+    aux.sort()
+    
+    i = 0
+    for el in arr:
+        if el % 2 == 0:
+            fin.append(el)
+        else:
+            fin.append(aux[i])
+            i += 1
+    return fin
