@@ -422,3 +422,35 @@ def sort_array(arr):
             fin.append(aux[i])
             i += 1
     return fin
+
+'''
+Valid Braces
+Write a function that takes a string of braces, and determines if the order of the braces is valid. 
+It should return true if the string is valid, and false if it's invalid.
+All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+Examples
+"(){}[]"   =>  True
+"([{}])"   =>  True
+"(}"       =>  False
+"[(])"     =>  False
+"[({})](]" =>  False
+'''
+def valid_braces(string):
+    dict = {'(' : ')', '{' : '}', '[' : ']', ')' : '1', '}' : '1', ']' : '1'}
+    if string == '': return True
+    print(string, string[-2])
+    try:
+        if dict[string[0]] == string[1]:
+            string = string[2:]
+            return valid_braces(string)
+        elif dict[string[-2]] == string[-1]:
+            string = string[:-2]
+            return valid_braces(string)
+        elif dict[string[0]] == string[-1]:
+            string = string[1:-1]
+            return valid_braces(string)
+        else:
+            return False
+    except:
+        return False
