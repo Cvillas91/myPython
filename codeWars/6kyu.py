@@ -491,3 +491,29 @@ def expanded_form(num):
         if strNum[1][i] != '0':
             fin += strNum[1][i] + '/1' + '0' * (i + 1) + ' + '
     return fin[:-3]
+
+'''
+Mexican Wave
+In this simple Kata your task is to create a function that turns a string into a Mexican Wave. 
+You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+ 1.  The input string will always be lower case but maybe empty.
+ 2.  If the character in the string is whitespace then pass over it as if it was an empty seat
+Example: wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+'''
+def wave(people):
+    new = []
+    l = len(people)
+    for i in range(0, l):
+        aux = ''
+        for j in range(0, len(people)):
+            if i == j:
+                aux += people[j].upper()
+            else:
+                aux += people[j]
+        new.append(aux)
+    fin = []
+    for el in new:
+        if el != people:
+            fin.append(el)
+    return fin
+            
