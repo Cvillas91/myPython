@@ -541,7 +541,7 @@ def twos_difference(lst):
     return arr
 
 '''
-Difference of 2
+Count letters in string
 You've to count lowercase letters in a given string and return the letter count in a hash with 'letter' as key and count 
 as 'value'.
 
