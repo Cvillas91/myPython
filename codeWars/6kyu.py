@@ -581,10 +581,41 @@ dig_pow(92, 1) should return -1 since there is no k such as 9¹ + 2² equals 92 
 dig_pow(695, 2) should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
 dig_pow(46288, 3) should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
 '''
-
 def dig_pow(n, p):
     sum = 0
     for el in str(n):
         sum += int(el) ** p
         p += 1
     return sum/n if sum/n - sum//n == 0 else -1
+
+'''
+Build Tower
+Build a pyramid-shaped tower given a positive integer number of floors. A tower block is represented with "*" character.
+
+For example, a tower with 3 floors looks like this:
+
+[
+  "  *  ",
+  " *** ", 
+  "*****"
+]
+And a tower with 6 floors looks like this:
+
+[
+  "     *     ", 
+  "    ***    ", 
+  "   *****   ", 
+  "  *******  ", 
+  " ********* ", 
+  "***********"
+]
+'''
+def tower_builder(n):
+    lng = (n * 2) - 1
+    fin = []
+    for i in range(0 , n):
+        sp = (lng // 2) - i
+        star = (lng // 2) - sp
+        str = sp * ' ' + star * '*' + '*' + star * '*' + sp * ' '
+        fin.append(str)
+    return fin
