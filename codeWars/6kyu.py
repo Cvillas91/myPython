@@ -659,3 +659,25 @@ def compute_sum(n):
         for el in num:
             sum += int(el)
     return sum
+
+'''
+Srot the inner ctonnet in dsnnieedcg oredr
+You have to sort the inner content of every word of a string in descending order.
+The inner content is the content of a word without first and the last char.
+Some examples:
+
+"sort the inner content in descending order"  -->  "srot the inner ctonnet in dsnnieedcg oredr"
+"wait for me"        -->  "wiat for me"
+"this kata is easy"  -->  "tihs ktaa is esay"
+Words are made up of lowercase letters.
+'''
+def sort_the_inner_content(words):
+    fin = []
+    arr = words.split(" ")
+    for el in arr:
+        if len(el) > 1:
+            m = "".join(sorted(el[1:-1], reverse = True))
+            fin.append(el[0] + m + el[-1])
+        else:
+            fin.append(el)
+    return " ".join(fin)
