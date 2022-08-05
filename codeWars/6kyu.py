@@ -639,3 +639,23 @@ def triple_double(num1, num2):
         if str(i) * 3 in num1 and str(i) * 2 in num2:
             return 1
     return 0
+
+'''
+Twisted Sum
+Find the sum of the digits of all the numbers from 1 to N (both ends included).
+
+Examples
+# N = 4
+1 + 2 + 3 + 4 = 10
+# N = 10
+1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + (1 + 0) = 46
+# N = 12
+1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + (1 + 0) + (1 + 1) + (1 + 2) = 51
+'''
+def compute_sum(n):
+    sum = 0
+    for i in range(0, n + 1):
+        num = str(i)
+        for el in num:
+            sum += int(el)
+    return sum
