@@ -681,3 +681,24 @@ def sort_the_inner_content(words):
         else:
             fin.append(el)
     return " ".join(fin)
+
+'''
+Alphabetized
+Re-order the characters of a string, so that they are concatenated into a new string in 
+"case-insensitively-alphabetical-order-of-appearance" order. 
+Whitespace and punctuation shall simply be removed!
+The input is restricted to contain no numerals and only words containing the english alphabet letters.
+
+Example:
+alphabetized("The Holy Bible") # "BbeehHilloTy"
+'''
+def alphabetized(s):
+    f= 'z'
+    for char in s:
+        if char.isalpha():
+            for i in range(len(f)):
+                if char.lower() < f[i]:
+                    f = char + f
+                    quit()
+    return f[:-1]
+                    
