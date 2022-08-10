@@ -720,3 +720,34 @@ def find_children(d):
         fin += el + d.count(el.lower()) * el.lower()
     return fin
     
+'''
+Dashatize it
+Given a variable n,
+If n is an integer, Return a string with dash'-'marks before and after each odd integer, 
+but do not begin or end the string with a dash mark. If n is negative, then the negative sign should be removed.
+If n is not an integer, return the string "None".
+
+Ex:
+dashatize(274) -> '2-7-4'
+dashatize(6815) -> '68-1-5'
+'''
+def dashatize(n):
+    if n == 0: return '0'
+    fin = ''
+    if type(n) == int:
+        for char in str(abs(n)):
+            if int(char) % 2 == 1:
+                fin += '-' + char + '-'
+            else:
+                fin += char
+
+        fin = fin.replace('--','-')
+
+        if fin[0] == '-':
+            fin = fin[1:]
+        if fin[-1] == '-':
+            fin = fin[:-1]
+        return fin
+                
+    else:
+        return 'None'
