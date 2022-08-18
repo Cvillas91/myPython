@@ -775,3 +775,38 @@ def bingo(ticket,win):
             miniw += 1
     return 'Winner!' if miniw >= win else 'Loser!'
             
+'''
+String Breakers
+I will give you an integer (N) and a string. 
+Break the string up into as many substrings of N as you can without spaces. 
+If there are leftover characters, include those as well.
+
+Example: 
+
+n = 5;
+
+st = "This is an example string";
+
+Return value:
+Thisi
+sanex
+ample
+strin
+g
+
+Return value as a string: 'Thisi'+'\n'+'sanex'+'\n'+'ample'+'\n'+'strin'+'\n'+'g'
+'''
+def string_breakers(n, st): 
+    st = st.replace(" ", "")
+    new = ''
+    
+    for i in range(1, len(st) + 1):
+        if i % n == 0:
+            new += st[i - 1] + '\n'
+        else:
+            new += st[i - 1]
+    
+    if new[-1:] == '\n': new = new[:-1] 
+    
+    return  new
+            
