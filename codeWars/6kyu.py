@@ -835,3 +835,22 @@ def solve(s):
         rrr.append(sum)
         
     return max(rrr)
+
+'''
+Reverse every other word in the string
+Reverse every other word in a given string, then return the string. 
+Throw away any leading or trailing whitespace, while ensuring there is exactly one space between each word. 
+Punctuation marks should be treated as if they are a part of the word in this kata.
+'''
+def reverse_alternate(string):
+    new = string.split(" ")
+    fin = []
+    i = 1
+    for el in new:
+        if el != '':
+            if i % 2 != 0:
+                fin.append(el)
+            else:
+                fin.append(el[::-1])
+            i += 1
+    return " ".join(fin)
