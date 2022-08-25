@@ -854,3 +854,21 @@ def reverse_alternate(string):
                 fin.append(el[::-1])
             i += 1
     return " ".join(fin)
+
+'''
+Anagram difference
+Given two words, how many letters do you have to remove from them to make them anagrams?
+Example
+First word : c od e w ar s (4 letters removed)
+Second word : ha c k er r a nk (6 letters removed)
+Result : 10
+'''
+def anagram_difference(w1, w2):
+    w1 = list(w1)
+    w2 = list(w2)
+    sum = 0
+    for el in w1:
+        if el in w2:
+            w2.pop(w2.index(el))
+            sum += 1
+    return len(w2) + len(w1) - sum
