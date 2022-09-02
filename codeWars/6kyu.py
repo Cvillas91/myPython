@@ -909,3 +909,23 @@ def mineLocation(field):
         for j in range(len(field[i])):
             if field[i][j] == 1:
                 return [i, j]
+
+'''
+Permute a Palindrome
+Write a function that will check whether ANY permutation of the characters of the input string is a palindrome. 
+Bonus points for a solution that is efficient and/or that uses only built-in language functions. 
+Deem yourself brilliant if you can come up with a version that does not use any function whatsoever.
+
+Examples
+madam -> True
+adamm -> True
+junk -> False
+'''
+def permute_a_palindrome (input): 
+    map = set(input)
+    flag = 0
+    for el in map:
+        if input.count(el) % 2 != 0:
+            flag += 1
+        if flag > 1: return False
+    return True
