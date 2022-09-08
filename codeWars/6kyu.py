@@ -947,3 +947,54 @@ def solution(*args):
         if args.count(el) > 1:
             return True
     return False
+
+'''
+Don't Drink the Water
+
+Given a two-dimensional array representation of a glass of mixed liquids, sort the array such that the liquids appear in the 
+glass based on their density. (Lower density floats to the top) The width of the glass will not change from top to bottom.
+
+======================
+|   Density Chart    |
+======================
+| Honey   | H | 1.36 |
+| Water   | W | 1.00 |
+| Alcohol | A | 0.87 |
+| Oil     | O | 0.80 |
+----------------------
+
+[                            [
+ ['H', 'H', 'W', 'O'],        ['O','O','O','O']
+ ['W', 'W', 'O', 'W'],  =>    ['W','W','W','W']
+ ['H', 'H', 'O', 'O']         ['H','H','H','H']
+ ]                           ]
+ 
+The glass representation may be larger or smaller. If a liquid doesn't fill a row, it floats to the top and to the left.
+'''
+def separate_liquids(glass):
+    if glass == []: return []
+    hs, os, als, ws = 0, 0, 0, 0
+    st = ''
+    new = []
+    size = len(glass[0])
+    for level in glass:
+        for el in level:
+            if el == "H":
+                hs += 1
+            elif el == "W":
+                ws += 1
+            elif el == "A":
+                als += 1
+            else:
+                os += 1
+    st = os * 'O' + als * 'A' + ws * 'W' + hs * 'H'
+    
+    for i in range(len(glass)):
+        aux = []
+        for j in range(size):
+            aux.append(st[0])
+            st = st[1:]
+        new.append(aux)
+        
+    return new
+                
