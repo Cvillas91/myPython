@@ -438,3 +438,25 @@ def compound_match(words, target):
         return [words[min(other)], words[max(other)], other]
     except:
         return None
+
+'''
+Find the unique string
+There is an array of strings. All strings contains similar letters except one. Try to find it!
+
+find_uniq([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]) # => 'BbBb'
+find_uniq([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]) # => 'foo'
+Strings may contain spaces. Spaces are not significant, only non-spaces symbols matters. E.g. string that contains only spaces is like empty string.
+'''
+def find_uniq(arr):
+    arr1 = "".join(arr)
+    new = []
+    min = 1000
+    for el in set(arr1):
+        if arr1.count(el) < min:
+            min = arr1.count(el)
+            aux = el
+    for subel in arr:
+        if aux in subel:
+            return subel
+
+    
