@@ -476,3 +476,25 @@ def max_sequence(arr):
         for j in range(0, leng + 1):
             fin.append(sum(arr[i:j]))
     return max(fin)
+
+'''
+Scraping: Get the Year a CodeWarrior Joined
+#Task: Write a function get_member_since which accepts a username from someone at Codewars and returns 
+an string containing the month and year separated by a space that they joined CodeWars.
+
+#Example:
+>>> get_member_since('dpleshkov')
+Jul 2016
+>>> get_member_since('jhoffner')
+Oct 2012
+'''
+from bs4 import BeautifulSoup
+import urllib.request
+def get_member_since(username):
+    html_content = urllib.request.urlopen("https://www.codewars.com/users/" + username)
+    soup = BeautifulSoup(html_content, "html.parser")
+    stat = soup.find_all("div", class_="stat")
+    for el in stat:
+        if 'Member' in el.text: 
+            stri = str(el.text)
+    return stri.replace("Member Since:", "")
