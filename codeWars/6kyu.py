@@ -1035,3 +1035,26 @@ def fizz_buzz_custom(string_one = 'Fizz', string_two = 'Buzz', num_one = 3, num_
         else:
             fin.append(i)
     return fin
+
+'''
+Christmas tree
+Create a function that returns a christmas tree of the correct height.
+For example: height = 5 should return:
+
+    *    
+   ***   
+  *****  
+ ******* 
+*********
+
+Height passed is always an integer between 0 and 100.
+
+Use \n for newlines between each line.
+Pad with spaces so each line is the same length. The last line having only stars, no spaces.
+'''
+def christmas_tree(height):
+    tree = ''
+    if height == 0: tree = ''
+    for i in range(1, height + 1):
+        tree += ' ' * (height - i) +  (i - 1) * '*' + '*' + (i - 1) * '*' + ' ' * (height - i) + '\n'
+    return tree[:-1]
