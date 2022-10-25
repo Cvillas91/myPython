@@ -1058,3 +1058,25 @@ def christmas_tree(height):
     for i in range(1, height + 1):
         tree += ' ' * (height - i) +  (i - 1) * '*' + '*' + (i - 1) * '*' + ' ' * (height - i) + '\n'
     return tree[:-1]
+
+'''
+Complete Fibonacci Series
+The function 'fibonacci' should return an array of fibonacci numbers. 
+The function takes a number as an argument to decide how many no. of elements to produce. 
+If the argument is less than or equal to 0 then return empty array
+
+Example:
+fibonacci(4) # should return  [0,1,1,2]
+fibonacci(-1) # should return []
+'''
+def fibonacci(n):
+    dict = {0:0, 1:1}
+    fin = []
+    if n <= 0: return fin
+    for i in range(0, n):
+        if i not in dict.keys():
+            dict[i] = dict[i-1] + dict[i-2]
+            fin.append(dict[i])
+        else:
+            fin.append(dict[i])
+    return fin
