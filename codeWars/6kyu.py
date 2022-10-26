@@ -1080,3 +1080,18 @@ def fibonacci(n):
         else:
             fin.append(dict[i])
     return fin
+
+'''
+N-th Fibonacci
+I love Fibonacci numbers in general, but I must admit I love some more than others.
+I would like for you to write me a function that when given a number (n) returns the n-th number in the Fibonacci Sequence.
+
+For example:
+   nth_fib(4) == 2
+'''
+def nth_fib(n):
+    a, b = 0, 1
+    if n == 1: return a
+    for i in range(1, n - 1):
+        a, b = b, a + b
+    return b
