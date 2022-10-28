@@ -17,7 +17,8 @@ def move_zeros(arr):
 
 ''' 
 ROT13
-ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. 
+ROT13 is an example of the Caesar cipher.
 
 Create a function that takes a string and returns the string ciphered with Rot13. 
 If there are numbers or special characters included in the string, they should be returned as they are. 
@@ -445,7 +446,8 @@ There is an array of strings. All strings contains similar letters except one. T
 
 find_uniq([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]) # => 'BbBb'
 find_uniq([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]) # => 'foo'
-Strings may contain spaces. Spaces are not significant, only non-spaces symbols matters. E.g. string that contains only spaces is like empty string.
+Strings may contain spaces. Spaces are not significant, only non-spaces symbols matters. 
+E.g. string that contains only spaces is like empty string.
 '''
 def find_uniq(arr):
     arr1 = "".join(arr)
