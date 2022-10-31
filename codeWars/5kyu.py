@@ -626,7 +626,7 @@ def average_if(values,criteria):
     return sum/count
 
 '''
-Excel's COUNTIF, SUMIF and AVERAGEIF functions
+okkOokOo
 We've got a message from the Librarian. 
 As usual there're many o and k in it and, as all codewarriors don't know "Ook" language we need that you translate this message.
 tip : it seems traditional "Hello World!" would look like : 
@@ -648,3 +648,54 @@ def okkOokOo(s):
         new_el = "0b" + el.lower().replace("o","0").replace("k","1").replace(",","").replace("!","")
         fin += (chr(eval(new_el)))
     return fin
+
+'''
+All that is open must be closed...
+We all know about "balancing parentheses" (plus brackets, braces and chevrons) and even balancing characters that are identical.
+Read that last sentence again, I balanced different characters and identical characters twice and you didn't even notice... :)
+Kata
+Your challenge in this kata is to write a piece of code to validate that a supplied string is balanced.
+You must determine if all that is open is then closed, and nothing is closed which is not already open!
+You will be given a string to validate, and a second string, where each pair of characters defines an opening and closing sequence 
+that needs balancing.
+You may assume that the second string always has an even number of characters.
+
+Example
+# In this case '(' opens a section, and ')' closes a section
+is_balanced("(Sensei says yes!)", "()")       # => True
+is_balanced("(Sensei says no!", "()")         # => False
+
+# In this case '(' and '[' open a section, while ')' and ']' close a section
+is_balanced("(Sensei [says] yes!)", "()[]")   # => True
+is_balanced("(Sensei [says) no!]", "()[]")    # => False
+
+# In this case a single quote (') both opens and closes a section
+is_balanced("Sensei says 'yes'!", "''")       # => True
+is_balanced("Sensei say's no!", "''")         # => False
+'''
+def is_balanced(source, caps):
+
+    dict ={}
+    j = 0
+    for i in range(0, int(len(caps)/2)):
+        dict[caps[j]] = caps[j + 1]
+        j += 2
+
+    only = ''
+
+    for el in source:
+        if el in caps:
+            only += el
+    if len(only) % 2 != 0:
+        return False
+    else:
+        for h in range(len(dict)):
+            only = only.replace(list(dict.keys())[h] + dict[list(dict.keys())[h]], '')
+        if len(only) % 2 != 0:  return False
+        mid_l = int(len(only)/2) - 1
+        mid_r = int(len(only)/2)
+        for i in range(0, mid_r):
+            if dict[only[mid_l - i]] != only[mid_r + i]:
+                return False
+    
+        return True
