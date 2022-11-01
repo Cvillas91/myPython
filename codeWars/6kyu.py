@@ -1168,4 +1168,28 @@ def twc(word):
         else:
             fin += word[i].lower()
     return fin
-        
+
+'''
+first character that repeats
+Find the first character that repeats in a String and return that character.
+
+first_dup('tweet') => 't'
+first_dup('like') => None
+This is not the same as finding the character that repeats first. In that case, an input of 'tweet' would yield 'e'.
+
+Another example:
+In 'translator' you should return 't', not 'a'.
+v      v  
+translator
+  ^   ^
+While second 'a' appears before second 't', the first 't' is before the first 'a'.
+'''
+def first_dup(s):
+    fin = []
+    for el in s:
+        if s.count(el) > 1:
+            fin.append(el)
+    try:
+        return fin[0]
+    except:
+        return None
