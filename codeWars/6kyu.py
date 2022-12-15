@@ -1300,3 +1300,26 @@ def isomorph(a, b):
     
     return word == a
         
+'''
+Highest Rank Number in an Array
+Complete the method which returns the number which is most frequent in the given input array. 
+If there is a tie for most frequent number, return the largest number among them.
+Note: no empty arrays will be given.
+
+Examples
+[12, 10, 8, 12, 7, 6, 4, 10, 12]              -->  12
+[12, 10, 8, 12, 7, 6, 4, 10, 12, 10]          -->  12
+[12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10]  -->   3
+'''
+def highest_rank(arr):
+    dict = {}
+    for el in set(arr):
+        dict[el] = arr.count(el)
+    high = 0
+    num = 0
+    for el in sorted(set(arr)):
+        if dict[el] >= high:
+            if el > num:
+                high = dict[el]
+                num = el
+    return num
