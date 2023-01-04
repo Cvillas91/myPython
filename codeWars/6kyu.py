@@ -1368,3 +1368,25 @@ def fcn (n):
         if i not in dict.keys():
             dict[i] = -6 * dict[i-2] * dict[i-1]//(-5 * dict[i-2] + dict[i-1])
     return dict[n]
+
+'''
+
+Longest Palindrome
+Find the length of the longest substring in the given string s that is the same in reverse.
+As an example, if the input was “I like racecars that go fast”, the substring (racecar) length would be 7.
+If the length of the input string is 0, the return value must be 0.
+
+Example:
+"a" -> 1 
+"aab" -> 2  
+"abcde" -> 1
+"zzbaabcd" -> 4
+"" -> 0
+'''
+def longest_palindrome (s):
+    large, count = 0, 0
+    for i in range(0, len(s)+1):
+        for j in range(i, len(s)+1):
+            if s[i:j] == s[i:j][::-1]:
+                count = max(count, len(s[i:j]))
+    return count
