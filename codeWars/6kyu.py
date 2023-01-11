@@ -1518,3 +1518,25 @@ def palindrome(num):
                     return True
         return False
     return 'Not valid'
+
+'''
+String average
+You are given a string of numbers between 0-9. 
+Find the average of these numbers and return it as a floored whole number (ie: no decimal places) written out as a string. 
+Eg: "zero nine five two" -> "four"
+
+If the string is empty or includes a number greater than 9, return "n/a"
+'''
+def average_string(s):
+    dict = {"one": 1, 1: "one", "two": 2, 2: "two", "three": 3, 3: "three", \
+           "four": 4, 4: "four", "five": 5, 5: "five", "six": 6, 6: "six", \
+           "seven":7, 7: "seven", "eight": 8, 8: "eight", "nine": 9, 9: "nine", \
+           "zero": 0, 0: "zero"}
+    new = s.split(" ")
+    av = 0
+    for el in new:
+        try:
+            av += dict[el]
+        except:
+            return "n/a"
+    return dict[av // len(new)]
