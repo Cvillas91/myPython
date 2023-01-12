@@ -1540,3 +1540,34 @@ def average_string(s):
         except:
             return "n/a"
     return dict[av // len(new)]
+
+'''
+Take a Number And Sum Its Digits Raised To The Consecutive Powers And ....¡Eureka!!
+The number 898989 is the first integer with more than one digit that fulfills the property partially 
+introduced in the title of this kata. What's the use of saying "Eureka"? 
+
+Examples
+1, 10  --> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+1, 100 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+If there are no numbers of this kind in the range [a,b][a, b][a,b] the function should output an empty list.
+90, 100 --> []
+'''
+def sum_dig_pow(a, b):
+    fin = []
+    for i in range(a, b + 1):
+        if check(i):
+            fin.append(i)
+    return fin
+        
+        
+def check(n):
+    sum = 0
+    s = str(n)
+    i = 1
+    for el in s:
+        sum += int(el) ** i
+        i += 1
+    if sum == n:
+        return True
+    else:
+        return False
