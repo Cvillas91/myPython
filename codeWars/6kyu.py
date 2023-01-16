@@ -1601,3 +1601,30 @@ def solution(a):
         else:
             break
     return count if count <= len(a) else -1
+
+'''
+Inside Out Strings
+You are given a string of words (x), for each word within the string you need to turn the word 'inside out'. 
+By this I mean the internal letters will move out, and the external letters move toward the centre.
+
+If the word is even length, all letters will move. 
+If the length is odd, you are expected to leave the 'middle' letter of the word where it is.
+
+An example should clarify:
+'taxi' would become 'atix' 'taxis' would become 'atxsi'
+'''
+def inside_out(st):
+    words = st.split(" ")
+    fin = []
+    for el in words:
+        fin.append(wch(el))
+    return " ".join(fin)
+    
+def wch(st):
+    l = len(st) // 2
+    if len(st) % 2 == 0:
+        return st[:l][::-1] + st[l:][::-1]
+    elif len(st) == 1:
+        return st
+    else:
+        return st[:l][::-1] + st[l] + st[l + 1:][::-1]
