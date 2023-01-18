@@ -1652,3 +1652,24 @@ def get_length_of_missing_array(a):
     for i in range(min(fin), max(fin) + 1):
         if i not in fin:
             return i
+        
+'''
+Autocomplete! Yay!
+The autocomplete function will take in an input string and a dictionary array and return the values 
+from the dictionary that start with the input string. If there are more than 5 matches, restrict your output 
+to the first 5 results. If there are no matches, return an empty array.
+
+Example:
+autocomplete('ai', ['airplane','airport','apple','ball']) = ['airplane','airport']
+'''
+def autocomplete(inp, dict):
+    new = ''
+    for el in inp:
+        if el.isalpha(): new += el
+        
+    lg = len(new)
+    fin = []
+    for el in dict:
+        if el.lower()[:lg] == new.lower():
+            fin.append(el)
+    return fin[:5]
