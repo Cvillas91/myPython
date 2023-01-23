@@ -1737,3 +1737,30 @@ def find_even_index(arr):
         if sum(arr[0 : i]) == sum(arr[i + 1:]):
             return i
     return -1
+
+'''
+Pascal's Triangle
+In mathematics, Pascal's triangle is a triangular array of the binomial coefficients expressed with formula
+
+Task
+Write a function that, given a depth n, returns n top rows of Pascal's Triangle flattened into a one-dimensional list/array.
+
+Example:
+n = 1: [1]
+n = 2: [1,  1, 1]
+n = 4: [1,  1, 1,  1, 2, 1,  1, 3, 3, 1]
+'''
+import math
+def pascals_triangle(n):
+    fin = []
+    for j in range(0, n):
+        for i in range(0, j + 1):
+            fin.append(fun(j,i))
+            
+    return fin
+
+def fun(n, k):
+    res1 = math.factorial(n)
+    res2 = math.factorial(k)
+    res3 = math.factorial(n-k)
+    return res1//(res2 * res3)
