@@ -724,3 +724,39 @@ def perimeter(n):
         fin.append(b)
         a, b = b, a + b
     return sum(fin) * 4
+
+'''
+Bulk up!
+Given an array of meals where each element is a string in the form '300g turkey, 300g potatoes, 100g cucumber' find out 
+how many proteins and calories you consumed. You like to keep things simple so all values will be expressed in grams. 
+In case you didn't know every gram of protein and carbohydrate has 4 calories, while 1 gram of fat provides 9 calories.
+An object food (in Ruby $food ) is preloaded for you that contains the information about the given food per 100 grams:
+food = { 
+  "chicken": [20, 5, 10], # per 100g chicken has 20g of protein, 5 grams of carbohydrates and 10 grams of fat.
+  "eggs": [10, 5, 15],    # protein:10g , carbs:5g , fats: 15g
+  "salmon": [27, 0, 10], 
+  "beans": [8, 25, 0], 
+  "bananas": [1, 23, 0], 
+  ... 
+  ... }
+Round your results to 2 decimal places and return a string in the form "Total proteins: n grams, Total calories: n".
+Delete all trailing zeros on every float and remove trailing point if the result is an integer. Note: No invalid input testing.
+'''
+def bulk(arr):
+    print(arr)
+    prot, cal = 0, 0
+    if arr == []: 
+        return 'Total proteins: 0 grams, Total calories: 0'
+    else:
+        new = ",".join(arr).replace(", ",",")
+        s = new.split(",")
+        for el in s:
+            aux = el.split(" ")
+            grams = int(aux[0].replace("g",""))
+            prot += food[aux[1]][0] * grams / 100
+            cal += food[aux[1]][0] * grams / 100 * 4
+            cal += food[aux[1]][1] * grams / 100 * 4
+            cal += food[aux[1]][2] * grams / 100 * 9    
+        prot = f'{str(prot).rstrip("0").rstrip(".") if "." in str(prot) else prot}'
+        cal = f'{str(cal).rstrip("0").rstrip(".") if "." in str(cal) else cal}'
+        return f"Total proteins: {prot} grams, Total calories: {cal}"
