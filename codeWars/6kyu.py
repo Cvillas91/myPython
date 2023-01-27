@@ -1825,3 +1825,26 @@ def shortest_steps_to_num(num):
             num -= 1
         step += 1
     return step
+
+'''
+Sum consecutives
+You are given a list/array which contains only integers (positive and negative). 
+Your job is to sum only the numbers that are the same and consecutive. 
+The result should be one list.
+
+#Examples:
+[1,4,4,4,0,4,3,3,1] # should return [1,12,0,4,6,1]
+[1,1,7,7,3] # should return [2,14,3]
+[-5,-5,7,7,12,0] # should return [-10,14,12,0]
+'''
+def sum_consecutives(s):
+    fin = []
+    fact = 1
+    for i in range(0, len(s) - 1):
+        if s[i] == s[i + 1]:
+            fact += 1
+        else:
+            fin.append(s[i] * fact)
+            fact = 1
+    fin.append(s[-1] * fact)
+    return fin
