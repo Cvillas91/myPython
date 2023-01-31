@@ -1883,3 +1883,23 @@ def longest_consec(s, k):
             if len(word) > len(mx):
                 mx = word
         return mx
+    
+'''
+Build a pile of Cubes
+Your task is to construct a building which will be a pile of n cubes. The cube at the bottom will have a volume of 
+If such a n exists or -1 if there is no such n.
+
+Examples:
+findNb(1071225) --> 45
+findNb(91716553919377) --> -1
+'''
+def find_nb(m):
+    sum = 0
+    i = 1
+    while True:
+        if sum > m: 
+            return -1
+        else:
+            sum += i ** 3
+            if sum == m: return i
+            i += 1
