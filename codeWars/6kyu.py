@@ -2011,3 +2011,28 @@ def data_reverse(data):
         fin.append(byt)
     s = "".join(fin[::-1])
     return [int(x) for x in s]
+
+'''
+Row of the odd triangle
+Given a triangle of consecutive odd numbers:
+
+             1
+          3     5
+       7     9    11
+   13    15    17    19
+21    23    25    27    29
+...
+find the triangle's row knowing its index (the rows are 1-indexed), e.g.:
+
+odd_row(1)  ==  [1]
+odd_row(2)  ==  [3, 5]
+odd_row(3)  ==  [7, 9, 11]
+Note: your code should be optimized to handle big inputs.
+'''
+def odd_row(n):
+    fin = []
+    ant = (n - 1) * n / 2
+    fo =  ant * 2 + 1
+    for i in range (0, n):
+        fin.append(fo + (2 * i))
+    return fin
