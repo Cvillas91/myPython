@@ -2036,3 +2036,35 @@ def odd_row(n):
     for i in range (0, n):
         fin.append(fo + (2 * i))
     return fin
+
+
+'''
+The Deaf Rats of Hamelin
+How many deaf rats are there?
+Legend
+P = The Pied Piper
+O~ = Rat going left
+~O = Rat going right
+
+Example
+ex1 ~O~O~O~O P has 0 deaf rats
+ex2 P O~ O~ ~O O~ has 1 deaf rat
+ex3 ~O~O~O~OP~O~OO~ has 2 deaf rats
+'''
+def count_deaf_rats(town):
+    sum = 0
+    town = town.replace(" ","")
+    le, ri = [], []
+    ind = town.index('P')
+    le, ri = town[0:ind], town[ind + 1:len(town) + 1]
+    
+    for i in range(0, len(le), 2):
+        if le[i] != '~':
+            sum += 1
+            
+    for i in range(0, len(ri), 2):
+        if ri[i] != 'O':
+            sum += 1
+            
+    return sum
+    
