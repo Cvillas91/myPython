@@ -760,3 +760,49 @@ def bulk(arr):
         prot = f'{str(prot).rstrip("0").rstrip(".") if "." in str(prot) else prot}'
         cal = f'{str(cal).rstrip("0").rstrip(".") if "." in str(cal) else cal}'
         return f"Total proteins: {prot} grams, Total calories: {cal}"
+
+'''
+Value of x
+Jack's teacher gave him a ton of equations for homework. The thing is they are all kind of same so they are boring.
+So help him by making a equation solving function that will return the value of x.
+
+Test Cases will be like this:
+# INPUT            # RETURN
+'x + 1 = 9 - 2'    # 6
+'- 10 = x'         # -10
+'x - 2 + 3 = 2'    # 1
+'- x = - 1'        # 1
+All test cases are valid.
+Every +, - and numbers will be separated by space.
+There will be only one x either on the left or right.
+x can have a - mark before it.
+returned object will be a integer.
+'''
+def solve(eq: str):
+    flag = False
+    if "- x" in eq: 
+        print('h')
+        flag = True
+        eq = eq.replace("- x", "x")
+        
+    eq = eq.replace("- ", "-").replace("+ ","")
+        
+    ind = eq.index("=")
+    le, ri = [], []
+    le, ri = eq[:ind], eq[ind + 1:]
+    aLe = le.split(" ")
+    aRi = ri.split(" ")
+
+    if 'x' in aLe:
+        sum1 = sum([int(x) for x in aRi if x != ''])
+        aLe.pop(aLe.index('x'))
+        sum2 = sum([int(x) for x in aLe if x != ''])
+    else:
+        sum1 = sum([int(x) for x in aLe if x != ''])
+        aRi.pop(aRi.index('x'))
+        sum2 = sum([int(x) for x in aRi if x != ''])
+    
+    if flag == True:
+        return (sum1 - sum2) * - 1
+    else:
+        return sum1 - sum2
