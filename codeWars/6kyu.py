@@ -2123,3 +2123,26 @@ def autocorrect(input):
         else:
             fin.append(el)
     return " ".join(fin)
+
+'''
+Rectangle into Squares
+The drawing below gives an idea of how to cut a given "true" rectangle into squares 
+("true" rectangle meaning that the two dimensions are different).
+
+You will be given two dimensions
+a positive integer length
+a positive integer width
+
+sqInRect(5, 3) should return [3, 2, 1, 1]
+sqInRect(3, 5) should return [3, 2, 1, 1]
+''' 
+def sq_in_rect(lng, wdth):
+    arr = []
+    if lng == wdth: return None
+    while lng > 0 and wdth > 0:
+        arr.append(wdth if lng > wdth else lng)
+        if lng > wdth:
+            lng -= wdth
+        else:
+            wdth -= lng
+    return arr
