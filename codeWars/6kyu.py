@@ -2146,3 +2146,23 @@ def sq_in_rect(lng, wdth):
         else:
             wdth -= lng
     return arr
+
+'''
+String array duplicates
+In this Kata, you will be given an array of strings and your task is to remove all consecutive duplicate letters from each string in the array.
+
+For example:
+dup(["abracadabra","allottee","assessee"]) = ["abracadabra","alote","asese"].
+dup(["kelless","keenness"]) = ["keles","kenes"].
+Strings will be lowercase only, no spaces. See test cases for more examples.
+''' 
+def dup(arry):
+    fin = []
+    dup = ' '
+    for word in arry:
+        for char in word:
+            if dup[-1] != char:
+                dup += char
+        fin.append(dup[1:])
+        dup = ' '
+    return fin
