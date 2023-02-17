@@ -806,3 +806,81 @@ def solve(eq: str):
         return (sum1 - sum2) * - 1
     else:
         return sum1 - sum2
+
+'''
+80's Kids #6: Rock 'Em, Sock 'Em Robots
+You and your friends have been battling it out with your Rock 'Em, Sock 'Em robots, 
+but things have gotten a little boring. You've each decided to add some amazing new features to your robot and automate them
+to battle to the death.
+Each robot will be represented by an object. 
+You will be given two robot objects, and an object of battle tactics and how much damage they produce. 
+Each robot will have a name, hit points, speed, and then a list of battle tacitcs they are to perform in order.
+Whichever robot has the best speed, will attack first with one battle tactic.
+
+Your job is to decide who wins.
+Example:
+
+ robot_1 = {
+  "name": "Rocky",
+  "health": 100,
+  "speed": 20,
+  "tactics": ["punch", "punch", "laser", "missile"]
+ }
+ robot_2 = {
+   "name": "Missile Bob",
+   "health": 100,
+   "speed": 21,
+   "tactics": ["missile", "missile", "missile", "missile"]
+ }
+ tactics = {
+   "punch": 20,
+   "laser": 30,
+   "missile": 35
+ }
+ 
+fight(robot_1, robot_2, tactics) -> "Missile Bob has won the fight."
+robot2 uses the first tactic, "missile" because he has the most speed. This reduces robot1's health by 35. 
+Now robot1 uses a punch, and so on.
+
+Rules
+A robot with the most speed attacks first. If they are tied, the first robot passed in attacks first.
+Robots alternate turns attacking. Tactics are used in order.
+A fight is over when a robot has 0 or less health or both robots have run out of tactics.
+A robot who has no tactics left does no more damage, but the other robot may use the rest of his tactics.
+If both robots run out of tactics, whoever has the most health wins. Return the message "{Name} has won the fight."
+If both robots run out of tactics and are tied for health, the fight is a draw. Return "The fight was a draw."
+'''
+def fight(r1, r2, t):
+    mxTacR1 = len(r1['tactics'])
+    mxTacR2 = len(r2['tactics'])
+    round = 1
+    while True:
+        if round > mxTacR1 or round > mxTacR2:
+            if r1['health'] == r2['health']: 
+                if mxTacR2 > mxTacR1:
+                    return f"{r2['name']} has won the fight."
+                else:
+                    return "The fight was a draw."
+            if r1['health'] > r2['health']: 
+                return f"{r1['name']} has won the fight."
+            else:
+                return f"{r2['name']} has won the fight."
+        if r1['speed'] >= r2['speed']:
+            r2['health'] -= t[r1['tactics'][round - 1]]
+            if r2['health'] <= 0:
+                return f"{r1['name']} has won the fight."
+            else:
+                r1['health'] -= t[r2['tactics'][round - 1]]
+                if r1['health'] <= 0:
+                    return f"{r2['name']} has won the fight."
+                round += 1
+        else:
+            r1['health'] -= t[r2['tactics'][round - 1]]
+            if r1['health'] <= 0:
+                return f"{r2['name']} has won the fight."
+            else:
+                r2['health'] -= t[r1['tactics'][round - 1]]
+                if r2['health'] <= 0:
+                    return f"{r1['name']} has won the fight."
+                round += 1
+       
