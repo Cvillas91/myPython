@@ -2221,4 +2221,32 @@ def fold_array(a, runs):
         if len(a) % 2 != 0: aux.append(a[l])
         a = aux
     return a
-    
+
+'''
+Encrypt this!
+You want to create secret messages which can be deciphered by the Decipher this! kata. 
+Here are the conditions:
+Your message is a string containing space separated words.
+You need to encrypt each word in the message using the following rules:
+The first letter must be converted to its ASCII code.
+The second letter must be switched with the last letter
+Keepin' it simple: There are no special characters in the input.
+
+Examples:
+encrypt_this("Hello") == "72olle"
+encrypt_this("good") == "103doo"
+encrypt_this("hello world") == "104olle 119drlo"
+''' 
+def encrypt_this(t):
+    if t == "": return ""
+    a = t.split(" ")
+    fin = []
+    for el in a:
+        if len(el) == 1:
+            fin.append(str(ord(el)))
+        elif len(el) == 2:
+            fin.append(str(ord(el[0])) + el[1])
+        else:
+            word = str(ord(el[0])) + el[-1] + el[2:-1] + el[1]
+            fin.append(word)
+    return " ".join(fin)
