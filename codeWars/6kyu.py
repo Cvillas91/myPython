@@ -2292,4 +2292,28 @@ def find_missing(s):
     n = len(s) + 1
     ss = (n/2) * (2 * s[0] + (n - 1) * d)
     return ss - sum(s)
-   
+
+'''
+extract file name
+You have to extract a portion of the file name as follows:
+Assume it will start with date represented as long number
+Followed by an underscore
+You'll have then a filename with an extension it will always have an extra extension at the end
+
+Inputs:
+1231231223123131_FILE_NAME.EXTENSION.OTHEREXTENSION
+1_This_is_an_otherExample.mpg.OTHEREXTENSIONadasdassdassds34
+1231231223123131_myFile.tar.gz2
+
+Outputs:
+FILE_NAME.EXTENSION
+This_is_an_otherExample.mpg
+myFile.tar
+''' 
+class FileNameExtractor:
+    @staticmethod
+    def extract_file_name(d):
+        t = d.split("_")
+        f = "_".join(t[1:])
+        h = f.split(".")
+        return ".".join(h[:2])
