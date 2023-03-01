@@ -2348,3 +2348,33 @@ def find_senior(lst):
         if el['age'] == mx:
             fin.append(el)
     return fin
+
+'''
+Format words into a sentence
+Complete the method so that it formats the words into a single comma separated value. 
+The last word should be separated by the word 'and' instead of a comma. 
+The method takes in an array of strings and returns a single formatted string.
+
+Note:
+Empty string values should be ignored.
+Empty arrays or null/nil/None values being passed into the method should result in an empty string being returned.
+Example: (Input --> output)
+
+['ninja', 'samurai', 'ronin'] --> "ninja, samurai and ronin"
+['ninja', '', 'ronin'] --> "ninja and ronin"
+[] -->""
+''' 
+def format_words(words):
+    fin = []
+    if words == None: return ""
+    for el in words:
+        if el != "":
+            fin.append(el)
+    if len(fin) == 0:
+        return ""
+    elif len(fin) == 1:
+        return fin[0]
+    elif len(fin) == 2:
+        return fin[0] + ' and ' + fin[1]
+    else:
+        return ", ".join(fin[:-1]) + ' and ' + fin[-1]
