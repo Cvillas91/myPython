@@ -2378,3 +2378,36 @@ def format_words(words):
         return fin[0] + ' and ' + fin[1]
     else:
         return ", ".join(fin[:-1]) + ' and ' + fin[-1]
+
+'''
+Pascal's Triangle #2
+Your function will be passed the depth of the triangle and your code has to return the corresponding Pascal's triangle up to that depth.
+
+The triangle should be returned as a nested array. For example:
+
+pascal(5) -> [ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1] ]
+To build the triangle, start with a single 1 at the top, for each number 
+in the next row you just take the two numbers above it and add them together, except for the edges, which are all 1. e.g.:
+
+      1
+    1   1
+  1   2   1
+1   3   3   1
+''' 
+def pascal(p):
+    fin = []
+    fin.append([1])
+    if p == 1: return fin
+    for i in range(1, p):
+        fin.append(getRow(i))
+    return fin
+    
+def getRow(n):
+    prev = 1
+    aux = []
+    aux.append(1)
+    for i in range(1, n + 1):
+        curr = (prev * (n - i + 1)) // i
+        aux.append(curr)
+        prev = curr
+    return aux    
