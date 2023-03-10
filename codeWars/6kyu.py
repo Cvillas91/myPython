@@ -2525,3 +2525,30 @@ def remember(s):
                     fin.append(el)
         iter += 1
     return fin
+
+'''
+Are we alternate?
+Create a function isAlt() that accepts a string as an argument and validates 
+whether the vowels (a, e, i, o, u) and consonants are in alternate order.
+
+is_alt("amazon")  # True
+is_alt("apple")   # False
+is_alt("banana")  # True
+Arguments consist of only lowercase letters.
+'''
+def is_alt(s):
+    if s[0] in 'aeiou':
+        for i in range(1, len(s), 2):
+            if s[i] in 'aeiou':
+                return False
+        for i in range(0, len(s), 2):
+            if s[i] not in 'aeiou':
+                return False
+    else:
+        for i in range(0, len(s), 2):
+            if s[i] in 'aeiou':
+                return False
+        for i in range(1, len(s), 2):
+            if s[i] not in 'aeiou':
+                return False
+    return True
