@@ -2704,3 +2704,47 @@ def is_age_diverse(lst):
         if x !=0: fin.append(x)
     print(list(set(fin)))
     return True if list(set(fin)) == [x for x in range(1, 11)] else False
+
+'''
+Give me a Diamond
+You need to return a string that looks like a diamond shape when printed on the screen, using asterisk (*) characters. 
+Trailing spaces should be removed, and every line must be terminated with a newline character (\n).
+Return null/nil/None/... if the input is an even number or negative, as it is not possible to print a 
+diamond of even or negative size.
+
+Examples
+A size 3 diamond:
+
+ *
+***
+ *
+...which would appear as a string of " *\n***\n *\n"
+
+A size 5 diamond:
+
+  *
+ ***
+*****
+ ***
+  *
+...that is:
+
+"  *\n ***\n*****\n ***\n  *\n"
+'''  
+def diamond(n):
+    top, bot = [], []
+    if n < 1 or n % 2 == 0: return None
+    t, b =  n // 2 + 1, n // 2
+    es = b
+    j = 0
+    for i in range(1, t + 1):
+        top.append(es * ' ' + (i + j) * '*' + '\n')
+        j += 1
+        es -= 1
+    j = 0
+    es = b
+    for i in range(1, b + 1):
+        bot.append(es * ' ' + (i + j) * '*' + '\n')
+        j += 1
+        es -= 1
+    return "".join(top) + "".join(bot[::-1])
