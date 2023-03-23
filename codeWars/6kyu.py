@@ -2778,3 +2778,41 @@ def all_continents(lst):
     for el in lst:
         fin.append(el['continent'])
     return True if len(set(fin)) == 5 else False
+
+'''
+Simple Encryption #1 - Alternating Split
+Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with 
+all the even-indexed characters of S, this process should be repeated N times.
+
+Examples:
+
+encrypt("012345", 1)  =>  "135024"
+encrypt("012345", 2)  =>  "135024"  ->  "304152"
+encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
+
+encrypt("01234", 1)  =>  "13024"
+encrypt("01234", 2)  =>  "13024"  ->  "32104"
+encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
+Together with the encryption function, you should also implement a decryption function which reverses the process.
+
+If the string S is an empty value or the integer N is not positive, return the first argument without changes.
+'''  
+def decrypt(text, n):
+    if n <= 0 or text == None: 
+        return text
+    else:
+        new = []
+        l = len(text)//2
+        f = text[l:]
+        s = text[:l]
+        for i in range(l + 1):
+            try:
+                new.append(f[i])
+            except:
+                pass
+            try:
+                new.append(s[i])
+            except:
+                pass
+        n -= 1
+        return decrypt("".join(new), n)
