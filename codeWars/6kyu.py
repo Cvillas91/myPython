@@ -3128,3 +3128,33 @@ def palindrome(num,s):
     else:
         return 'Not valid'
         
+'''
+A Rule of Divisibility by 13
+When you divide the successive powers of 10 by 13 you get the following remainders of the integer divisions:
+1, 10, 9, 12, 3, 4 because:
+10 ^ 0 ->  1 (mod 13)
+10 ^ 1 -> 10 (mod 13)
+10 ^ 2 ->  9 (mod 13)
+10 ^ 3 -> 12 (mod 13)
+10 ^ 4 ->  3 (mod 13)
+10 ^ 5 ->  4 (mod 13)
+
+Then the whole pattern repeats. Hence the following method:
+Multiply the right most digit of the number with the left most number in the sequence shown above,
+the second right most digit with the second left most digit of the number in the sequence.
+The cycle goes on and you sum all these products. Repeat this process until the sequence of sums is stationary.
+
+Example:
+thirt(1234567) calculates 178, then 87, then 87 and returns 87.
+thirt(321) calculates 48, 48 and returns 48
+'''
+def thirt(n):
+    new = 0
+    a = [1, 10, 9, 12, 3, 4] * len(str(n))
+    while True:
+        for i in range(len(str(n))):
+            new += a[i] * int(str(n)[-i-1])
+        if n == new: 
+            return new
+        else:
+            n, new = new, 0
