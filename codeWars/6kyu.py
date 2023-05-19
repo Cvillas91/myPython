@@ -3268,9 +3268,31 @@ Examples
 "abcdaaadse", "a"  -->  3
 "abcdaaadse", "z"  -->  0
 '''
-
 def get_consective_items(i, k): 
     i, k = str(i), str(k)
     newi = "".join(['*' if x != k else k for x in i])
     last = newi.split("*")
     return len(max(last, key=len))
+
+'''
+Lowest product of 4 consecutive numbers
+Create a function that returns the lowest product of 4 consecutive digits in a number given as a string.
+This should only work if the number has 4 digits or more. If not, return "Number is too small".
+
+Example
+lowest_product("123456789") --> 24 (1x2x3x4)
+lowest_product("35") --> "Number is too small"
+'''
+def lowest_product(input):
+    min = 100000000
+    if len(input) < 4: return "Number is too small"
+    for i in range(len(input) - 3):
+        aux = prod(input[i:i+4])
+        if aux < min: min = aux
+    return min
+        
+def prod(s):
+    res = 1
+    for i in s:
+        res *= int(i)
+    return res
